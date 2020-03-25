@@ -8,7 +8,11 @@
   const URL = 'frog_song_German_Polka.m4a';
   document.addEventListener('DOMContentLoaded',() => {
     const audio = document.getElementById( 'audio' );
-    audio.src = URL;
+    //audio.src = URL;
+    fetch( URL ).then( ( r ) => { return r.blob(); } ).then( ( blob ) => {
+      const file = new File( [ blob ], 'test.m4a'. { type: 'audio/mp4' } );
+      audio.src = URL.createObjectURL( file, { type: file.mime } );
+    } );
     const button = document.getElementById( 'play' );
     button.addEventListener( 'click', () => {
       const nowplay = button.classList.contains( 'nowplay' );
@@ -33,6 +37,6 @@
   <p>Audio関連のテスト。サンプルは http://www.mu-tech.co.jp/Ringtone/frog_song.asp から</p>
   <button id="play"></button>
   <audio id="audio"></audio>
-  <div>v3</div>
+  <div>v4</div>
 </body>
 </html>
