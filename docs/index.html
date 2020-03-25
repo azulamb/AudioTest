@@ -17,6 +17,7 @@
       } else {
         button.classList.add( 'nowplay' );
       }
+      audio.load();
       setTimeout( () => {
         if ( nowplay ) {
           audio.pause();
@@ -32,6 +33,6 @@
   <p>Audio関連のテスト。サンプルは http://www.mu-tech.co.jp/Ringtone/frog_song.asp から</p>
   <button id="play"></button>
   <audio id="audio"></audio>
-  <div>v2</div>
+  <div>v3</div>
 </body>
 </html>
