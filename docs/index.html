@@ -10,7 +10,7 @@
     const audio = document.getElementById( 'audio' );
     //audio.src = URL;
     fetch( URL ).then( ( r ) => { return r.blob(); } ).then( ( blob ) => {
-      const file = new File( [ blob ], 'test.m4a'. { type: 'audio/mp4' } );
+      const file = new File( [ blob ], 'test.m4a', { type: 'audio/mp4' } );
       audio.src = URL.createObjectURL( file, { type: file.mime } );
     } );
     const button = document.getElementById( 'play' );
