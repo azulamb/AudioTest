@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title></title>
-<style></style>
+  <style>#play::before{content:"Play";}#play.nowplay::before{content:"Stop";}</style>
 <script>
   const URL = 'frog_song_German_Polka.m4a';
   document.addEventListener('DOMContentLoaded',() => {
@@ -11,15 +11,21 @@
     audio.src = URL;
     const button = document.getElementById( 'play' );
     button.addEventListener( 'click', () => {
-      audio.play();
+      if ( button.classList.contains( 'nowplay' ) ) {
+        audio.pause();
+        button.classList.remove( 'nowplay' )
+      } else {
+        audio.play();
+        button.classList.add( 'nowplay' )
+      }
     } );
   } );
 </script>
 </head>
 <body>
   <p>Audio関連のテスト。サンプルは http://www.mu-tech.co.jp/Ringtone/frog_song.asp から</p>
-  <button id="play">Play</button>
+  <button id="play"></button>
   <audio id="audio"></audio>
-  <div>v0</div>
+  <div>v1</div>
 </body>
 </html>
