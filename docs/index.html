@@ -11,13 +11,19 @@
     audio.src = URL;
     const button = document.getElementById( 'play' );
     button.addEventListener( 'click', () => {
-      if ( button.classList.contains( 'nowplay' ) ) {
-        audio.pause();
-        button.classList.remove( 'nowplay' )
+      const nowplay = button.classList.contains( 'nowplay' );
+      if ( nowplay ) {
+        button.classList.remove( 'nowplay' );
       } else {
-        audio.play();
-        button.classList.add( 'nowplay' )
+        button.classList.add( 'nowplay' );
       }
+      setTimeout( () => {
+        if ( nowplay ) {
+          audio.pause();
+        } else {
+          audio.play();
+        }
+      }, 1000 );
     } );
   } );
 </script>
@@ -26,6 +32,6 @@
   <p>Audio関連のテスト。サンプルは http://www.mu-tech.co.jp/Ringtone/frog_song.asp から</p>
   <button id="play"></button>
   <audio id="audio"></audio>
-  <div>v1</div>
+  <div>v2</div>
 </body>
 </html>
