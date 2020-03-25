@@ -4,9 +4,22 @@
 <meta charset="utf-8">
 <title></title>
 <style></style>
-<script></script>
+<script>
+  const URL = 'http://www.mu-tech.co.jp/midi/traditional/fsout/frog_song_Bon_Odori.mp4';
+  document.addEventListener('DOMContentLoaded',() => {
+    const audio = document.getElementById( 'audio' );
+    audio.src = URL;
+    const button = document.getElementById( 'play' )l
+    button.addEventListener( 'click', () => {
+      audio.play();
+    } );
+  } );
+</script>
 </head>
 <body>
-test
+  <p>Audio関連のテスト。サンプルは http://www.mu-tech.co.jp/Ringtone/frog_song.asp から</p>
+  <button id="play">Play</button>
+  <audio id="audio"></audio>
+  <div>v0</div>
 </body>
 </html>
