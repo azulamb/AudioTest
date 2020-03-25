@@ -5,11 +5,11 @@
 <title></title>
   <style>#play::before{content:"Play";}#play.nowplay::before{content:"Stop";}</style>
 <script>
-  const URL = 'frog_song_German_Polka.m4a';
+  const url = 'frog_song_German_Polka.m4a';
   document.addEventListener('DOMContentLoaded',() => {
     const audio = document.getElementById( 'audio' );
-    //audio.src = URL;
-    fetch( URL ).then( ( r ) => { return r.blob(); } ).then( ( blob ) => {
+    //audio.src = url;
+    fetch( url ).then( ( r ) => { return r.blob(); } ).then( ( blob ) => {
       const file = new File( [ blob ], 'test.m4a', { type: 'audio/mp4' } );
       audio.src = URL.createObjectURL( file, { type: file.mime } );
     } );
