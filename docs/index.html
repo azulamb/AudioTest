@@ -13,9 +13,21 @@
 </style>
 <script>
   const url = 'frog_song_German_Polka.m4a';
+  const WIDTH = window.innerWidth;
   const HEIGHT = window.innerHeight;
+  function onShiftKeyboard( open ) {
+    document.getElementById( 'kresult' ).textContent = open ? 'OPEN' : 'CLOSE';
+  }
   function update() {
-    document.getElementById( 'result' ).textContent = window.innerHeight + '';
+    document.getElementById( 'result' ).textContent = window.innerWidth + 'x' + window.innerHeight;
+    if (
+      window.innerWidth == WIDTH && window.innerHeight == HEIGHT ||
+      window.innerWidth == HEIGHT && window.innerHeight == WIDTH
+    ) {
+      onShiftKeyboard( false );
+      return;
+    }
+    onShiftKeyboard( true );
   }
   document.addEventListener('DOMContentLoaded',() => {
     const audio = document.getElementById( 'audio' );
@@ -42,8 +54,8 @@
       }, 1000 );
     } );
     update();
-    setInterval( update, 5000 );
   } );
+  window.addEventListener( 'resize', update, false );
 </script>
 </head>
 <body>
@@ -52,9 +64,10 @@
     <p>Audio関連のテスト。サンプルは http://www.mu-tech.co.jp/Ringtone/frog_song.asp から</p>
     <button id="play"></button>
     <audio id="audio"></audio>
-    <div>v9</div>
+    <div>v10</div>
     <input />
     <div id="result"></div>
+    <div id="kresult"></div>
   </div>
   <footer>f</footer>
 </body>
